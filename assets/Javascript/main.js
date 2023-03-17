@@ -1,22 +1,13 @@
 const menu = document.getElementById('circle-menu');
-const menuIcon = document.querySelector('menu');
 const pagina = document.querySelector('.container');
 const nav = document.querySelector('nav');
-const i = document.querySelector('i')
+const i = menu.querySelector('i');
 
-function abreFecha(){
-    if(!pagina.classList.contains('menu-active')){
-        pagina.classList.add('menu-active');
-        nav.classList.remove('some-menu');
-        nav.classList.add('aparece-menu');
-        menu.style.transform = 'rotate(-65deg)';
-        i.classList.add('fa-times');
-    }else{
-        pagina.classList.remove('menu-active');
-        nav.classList.remove('aparece-menu');
-        nav.classList.add('some-menu');
-        menu.style.transform = 'rotate(-1deg)';
-
-    }
+function toggleMenu() {
+    pagina.classList.toggle('menu-active');
+    nav.classList.toggle('aparece-menu');
+    nav.classList.toggle('some-menu');
+    menu.style.transform = pagina.classList.contains('menu-active') ? 'rotate(-65deg)' : 'rotate(-1deg)';
+    i.classList.toggle('fa-times');
 }
-menu.addEventListener('click', abreFecha);
+menu.addEventListener('click', toggleMenu);
